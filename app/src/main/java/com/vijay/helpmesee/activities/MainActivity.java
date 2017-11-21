@@ -36,6 +36,7 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
+import com.vijay.helpmesee.BuildConfig;
 import com.vijay.helpmesee.R;
 import com.vijay.helpmesee.Utils.PackageManagerUtils;
 import com.vijay.helpmesee.Utils.PermissionUtils;
@@ -48,17 +49,15 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyCN4qy1vggymZJ4_SmDkNjienUOA2CFaW0";
     public static final String FILE_NAME = "temp.jpg";
+    public static final int CAMERA_PERMISSIONS_REQUEST = 2;
+    public static final int CAMERA_IMAGE_REQUEST = 3;
+    private static final String CLOUD_VISION_API_KEY = BuildConfig.CLOUD_VISION_API_KEY;
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private static final int GALLERY_IMAGE_REQUEST = 1;
-    public static final int CAMERA_PERMISSIONS_REQUEST = 2;
-    public static final int CAMERA_IMAGE_REQUEST = 3;
-
     private TextView mImageDetails;
     private ImageView mMainImage;
 
@@ -289,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String convertResponseToString(BatchAnnotateImagesResponse response) {
         String message = "I found these things:\n\n";
+        Log.e("response", response.toString());
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
         if (labels != null) {
