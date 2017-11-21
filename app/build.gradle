@@ -11,7 +11,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField "String", "CLOUD_VISION_API_KEY", "AIzaSyCN4qy1vggymZJ4_SmDkNjienUOA2CFaW0"
+        }
         release {
+            buildConfigField "String", "CLOUD_VISION_API_KEY", "AIzaSyCN4qy1vggymZJ4_SmDkNjienUOA2CFaW0"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -24,6 +28,8 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:25.4.0'
@@ -35,4 +41,14 @@ dependencies {
     compile 'com.google.http-client:google-http-client-gson:1.20.0' exclude module: 'httpclient'
     compile 'com.android.support:design:25.4.0'
     compile 'com.google.apis:google-api-services-vision:v1-rev2-1.21.0'
+
+    //rx
+    //other
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+    compile 'com.jakewharton:butterknife:8.3.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'com.google.code.gson:gson:2.4'
 }
