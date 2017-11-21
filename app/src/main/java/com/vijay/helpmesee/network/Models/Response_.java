@@ -1,5 +1,5 @@
 
-package com.vijay.helpmesee.network;
+package com.vijay.helpmesee.network.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
